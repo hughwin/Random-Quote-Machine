@@ -17,7 +17,6 @@ $(document).ready(function() {
     // Likewise with the author
     $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?", function(json) {
       $("#all").fadeIn("slow");
-	  console.log(json.quoteText);
       $("#message").html(JSON.stringify(json.quoteText)).fadeIn("slow");
       if (json.quoteAuthor === "") {
         json.quoteAuthor = "Anon"
@@ -26,6 +25,7 @@ $(document).ready(function() {
       $("#author").html(JSON.stringify(json.quoteAuthor).slice(1, -1)).fadeIn("slow");
       // The code returned the author with two apostrophes, which made the whole thing look terrible. By slicing the beginning and the end of the slice the author tag looks a lot better
     });
+  });
 });
 $('#tweet').click(function() {
   window.open("https://twitter.com/intent/tweet?text=" + $("#message").text() + " - " + $('#author').text().replace(/\"/g, ""));
