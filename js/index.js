@@ -15,7 +15,7 @@ $(document).ready(function() {
     // The message (if there is one) fades out. 
     $("#author").fadeOut("slow");
     // Likewise with the author
-    $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?", function(json) {
+    $.getJSON("https://cors-anywhere.herokuapp.com/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en", function(json) {
       $("#all").fadeIn("slow");
       $("#message").html(JSON.stringify(json.quoteText)).fadeIn("slow");
       if (json.quoteAuthor === "") {
